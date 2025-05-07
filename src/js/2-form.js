@@ -28,12 +28,17 @@ function handleFormInput(event) {
 //================== Обробка submit =============================
 formElem.addEventListener('submit', handleBtnSubmit);
 function handleBtnSubmit(event) {
+  event.preventDefault();
+
   if (!formData.email || !formData.message) {
     alert('Fill please all fields');
-  } else {
-    console.log(formData);
+    return;
   }
-  event.preventDefault();
+
+  console.log(formData);
+
   localStorage.removeItem(storageKey);
   formElem.reset();
+  formData.email = '';
+  formData.message = '';
 }
